@@ -26,10 +26,3 @@
 *.exe
 *.out
 *.app
-main
-
-# Swaps
-*.swp
-
-# build directory
-build

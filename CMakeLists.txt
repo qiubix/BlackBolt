@@ -1,4 +1,4 @@
-project(chapterFirstExample)
+project(SoundexExample)
 cmake_minimum_required(VERSION 2.6)
 
 include_directories($ENV{GMOCK_HOME}/include $ENV{GMOCK_HOME}/gtest/include)
