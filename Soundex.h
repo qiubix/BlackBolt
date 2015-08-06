@@ -6,13 +6,19 @@ class Soundex
 {
 public:
   std::string encode(const std::string& word) const {
-    if ( word == "Ab" ) return "A100";
-    return zeroPad(word);
+    auto encoded = word.substr(0, 1);
+
+    if (word.length() > 1) {
+      encoded += "1";
+    }
+
+    return zeroPad(encoded);
   }
 
 private:
   std::string zeroPad(const std::string& word) const {
-    return word + "000";
+    auto zerosNeeded = 4 - word.length();
+    return word + std::string(zerosNeeded, '0');
   }
 };
 
