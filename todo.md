@@ -2,7 +2,7 @@
 
 Class that provides interface for encoding names with Soundex algorithm.
 1. Retain the first letter. Drop all other occurences of a, e, i, o, u, y, h, w.
-2. Replace letters after the first letter with digits:
+2. Replace letters after the first letter (consonants) with digits:
 - b, f, p, v : 1
 - c, g, j, k, q, s, x, z : 2
 - d, t : 3
