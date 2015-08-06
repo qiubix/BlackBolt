@@ -2,6 +2,8 @@
 #define SOUNDEX_H
 #include <string>
 
+static const size_t MaxCodeLength{4};
+
 class Soundex
 {
 public:
@@ -16,13 +18,17 @@ private:
 
   std::string encodedDigits(const std::string& word) const {
     if (word.length() > 1) {
-      return "1";
+      return encodedDigit();
     }
     return "";
   }
 
+  std::string encodedDigit() const {
+    return "1";
+  }
+
   std::string zeroPad(const std::string& word) const {
-    auto zerosNeeded = 4 - word.length();
+    auto zerosNeeded = MaxCodeLength - word.length();
     return word + std::string(zerosNeeded, '0');
   }
 };
