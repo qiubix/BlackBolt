@@ -1,6 +1,7 @@
 #ifndef SOUNDEX_H
 #define SOUNDEX_H
 #include <string>
+#include <unordered_map>
 
 static const size_t MaxCodeLength{4};
 
@@ -24,8 +25,12 @@ private:
   }
 
   std::string encodedDigit(char letter) const {
-    if (letter == 'c') return "2";
-    return "1";
+    const std::unordered_map<char, std::string> encodings {
+      {'b', "1"},
+      {'c', "2"},
+      {'d', "3"}
+    };
+    return encodings.find(letter)->second;
   }
 
   std::string zeroPad(const std::string& word) const {
