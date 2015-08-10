@@ -9,8 +9,13 @@ enable_testing()
 
 set(sources
    main.cpp
-   SoundexTest.cpp)
-add_executable(SoundexTest ${sources})
+   StringUtil.cpp
+   CharUtil.cpp)
+set(testSources
+   SoundexTest.cpp
+   StringUtilTest.cpp
+   CharUtilTest.cpp)
+ add_executable(SoundexTest ${testSources} ${sources})
 target_link_libraries(SoundexTest pthread)
 target_link_libraries(SoundexTest gmock)
 target_link_libraries(SoundexTest gtest)

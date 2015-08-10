@@ -6,6 +6,9 @@
 #include "StringUtil.h"
 #include "CharUtil.h"
 
+using namespace stringutil;
+using namespace charutil;
+
 static const size_t MaxCodeLength{4};
 
 class Soundex
