@@ -9,7 +9,7 @@ class Soundex
 {
 public:
   std::string encode(const std::string& word) const {
-    return zeroPad(head(word) + encodedDigits(tail(word)));
+    return zeroPad(upperFront(head(word)) + encodedDigits(tail(word)));
   }
 
   std::string encodedDigit(char letter) const {
@@ -28,6 +28,10 @@ public:
 private:
   std::string head(const std::string& word) const {
     return word.substr(0, 1);
+  }
+
+  std::string upperFront(const std::string& front) const {
+    return std::string(1, std::toupper(static_cast<unsigned char>(front.front())));
   }
 
   std::string tail(const std::string& word) const {
