@@ -21,7 +21,7 @@ public:
       {'m', "5"}, {'n', "5"},
       {'r', "6"}
     };
-    auto it = encodings.find(letter);
+    auto it = encodings.find(lower(letter));
     return it == encodings.end() ? NotADigit : it->second;
   }
 
@@ -36,6 +36,10 @@ private:
 
   std::string tail(const std::string& word) const {
     return word.substr(1);
+  }
+
+  char lower(char letter) const {
+    return std::tolower(static_cast<unsigned char>(letter));
   }
 
   const std::string NotADigit{"*"};
