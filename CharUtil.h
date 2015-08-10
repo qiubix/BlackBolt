@@ -4,6 +4,7 @@
 namespace charutil {
 
 char lower(char letter);
+char upper(char letter);
 bool isVowel(char letter);
 
 }
