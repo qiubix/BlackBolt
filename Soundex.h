@@ -3,6 +3,9 @@
 #include <string>
 #include <unordered_map>
 
+#include "StringUtil.h"
+#include "CharUtil.h"
+
 static const size_t MaxCodeLength{4};
 
 class Soundex
@@ -26,22 +29,6 @@ public:
   }
 
 private:
-  std::string head(const std::string& word) const {
-    return word.substr(0, 1);
-  }
-
-  std::string upperFront(const std::string& front) const {
-    return std::string(1, std::toupper(static_cast<unsigned char>(front.front())));
-  }
-
-  std::string tail(const std::string& word) const {
-    return word.substr(1);
-  }
-
-  char lower(char letter) const {
-    return std::tolower(static_cast<unsigned char>(letter));
-  }
-
   const std::string NotADigit{"*"};
 
   std::string encodedDigits(const std::string& word) const {
@@ -65,10 +52,6 @@ private:
       auto digit = encodedDigit(letter);
       if (digit != NotADigit && (digit != lastDigit(encoding) || isVowel(lastLetter)))
         encoding += digit;
-  }
-
-  bool isVowel(char letter) const {
-    return std::string("aeiouy").find(lower(letter)) != std::string::npos;
   }
 
   bool isComplete(const std::string& encoding) const {
