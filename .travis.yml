@@ -6,8 +6,11 @@ addons:
     packages:
       - g++-5
       - gcc-5
+      - lcov
     sources:
       - ubuntu-toolchain-r-test
+before_install:
+  - pip install --user cpp-coveralls
 before_script:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
   - wget https://googlemock.googlecode.com/files/gmock-1.7.0.zip -O /tmp/gmock.zip
@@ -15,4 +18,6 @@ before_script:
   - cd /tmp/gmock-1.7.0 && mkdir build && cd build && cmake .. && make -j4 && cd ../gtest && mkdir build && cd build && cmake .. && make -j4
   - export GMOCK_HOME=/tmp/gmock-1.7.0
   - cd ~/build/qiubix/BlackBolt
-script: cmake . && make && make test
+script: cmake -DCMAKE_BUILD_TYPE=Debug . && make && make test
+after_success:
+  - coveralls --gcov-options '\-lp'
