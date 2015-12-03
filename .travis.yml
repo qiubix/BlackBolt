@@ -20,4 +20,4 @@ before_script:
   - cd ~/build/qiubix/BlackBolt
 script: cmake -DCMAKE_BUILD_TYPE=Debug . && make && make test
 after_success:
-  - coveralls --gcov-options '\-lp'
+  - coveralls --exclude-pattern '.*Test.cpp' --gcov-options '\-lp'
