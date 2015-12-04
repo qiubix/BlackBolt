@@ -7,12 +7,16 @@ addons:
       - g++-5
       - gcc-5
       - lcov
+      - gcov-5
     sources:
       - ubuntu-toolchain-r-test
 before_install:
   - pip install --user cpp-coveralls
 before_script:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+  - export GCOV="gcov-5"
+  - g++ --version
+  - gcov --version
   - wget https://googlemock.googlecode.com/files/gmock-1.7.0.zip -O /tmp/gmock.zip
   - cd /tmp && unzip /tmp/gmock.zip
   - cd /tmp/gmock-1.7.0 && mkdir build && cd build && cmake .. && make -j4 && cd ../gtest && mkdir build && cd build && cmake .. && make -j4
