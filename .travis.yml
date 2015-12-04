@@ -7,7 +7,7 @@ addons:
       - g++-5
       - gcc-5
       - lcov
-      - gcov-5
+      - ggcov
     sources:
       - ubuntu-toolchain-r-test
 before_install:
